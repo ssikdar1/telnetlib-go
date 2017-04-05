@@ -65,6 +65,66 @@ type Telnet struct {
 	*/
 }
 
+// Telnet protocol options code (don't change)
+const BINARY rune = rune(0)          // 8-bit data path
+const ECHO rune = rune(1)            // echo
+const RCP rune = rune(2)             // prepare to reconnect
+const SGA rune = rune(3)             // suppress go ahead
+const NAMS rune = rune(4)            // approximate message size
+const STATUS rune = rune(5)          // give status
+const TM rune = rune(6)              // timing mark
+const RCTE rune = rune(7)            // remote controlled transmission and echo
+const NAOL rune = rune(8)            // negotiate about output line width
+const NAOP rune = rune(9)            // negotiate about output page size
+const NAOCRD rune = rune(10)         // negotiate about CR disposition
+const NAOHTS rune = rune(11)         // negotiate about horizontal tabstops
+const NAOHTD rune = rune(12)         // negotiate about horizontal tab disposition
+const NAOFFD rune = rune(13)         // negotiate about formfeed disposition
+const NAOVTS rune = rune(14)         // negotiate about vertical tab stops
+const NAOVTD rune = rune(15)         // negotiate about vertical tab disposition
+const NAOLFD rune = rune(16)         // negotiate about output LF disposition
+const XASCII rune = rune(17)         // extended ascii character set
+const LOGOUT rune = rune(18)         // force logout
+const BM rune = rune(19)             // byte macro
+const DET rune = rune(20)            // data entry terminal
+const SUPDUP rune = rune(21)         // supdup protocol
+const SUPDUPOUTPUT rune = rune(22)   // supdup output
+const SNDLOC rune = rune(23)         // send location
+const TTYPE rune = rune(24)          // terminal type
+const EOR rune = rune(25)            // end or record
+const TUID rune = rune(26)           // TACACS user identification
+const OUTMRK rune = rune(27)         // output marking
+const TTYLOC rune = rune(28)         // terminal location number
+const VT3270REGIME rune = rune(29)   // 3270 regime
+const X3PAD rune = rune(30)          // X.3 PAD
+const NAWS rune = rune(31)           // window size
+const TSPEED rune = rune(32)         // terminal speed
+const LFLOW rune = rune(33)          // remote flow control
+const LINEMODE rune = rune(34)       // Linemode option
+const XDISPLOC rune = rune(35)       // X Display Location
+const OLD_ENVIRON rune = rune(36)    // Old - Environment variables
+const AUTHENTICATION rune = rune(37) // Authenticate
+const ENCRYPT rune = rune(38)        // Encryption option
+const NEW_ENVIRON rune = rune(39)    // New - Environment variables
+// the following ones come from
+// http://www.iana.org/assignments/telnet-options
+// Unfortunately, that document does not assign identifiers
+// to all of them, so we are making them up
+const TN3270E rune = rune(40)             // TN3270E
+const XAUTH rune = rune(41)               // XAUTH
+const CHARSET rune = rune(42)             // CHARSET
+const RSP rune = rune(43)                 // Telnet Remote Serial Port
+const COM_PORT_OPTION rune = rune(44)     // Com Port Control Option
+const SUPPRESS_LOCAL_ECHO rune = rune(45) // Telnet Suppress Local Echo
+const TLS rune = rune(46)                 // Telnet Start TLS
+const KERMIT rune = rune(47)              // KERMIT
+const SEND_URL rune = rune(48)            // SEND-URL
+const FORWARD_X rune = rune(49)           // FORWARD_X
+const PRAGMA_LOGON rune = rune(138)       // TELOPT PRAGMA LOGON
+const SSPI_LOGON rune = rune(139)         // TELOPT SSPI LOGON
+const PRAGMA_HEARTBEAT rune = rune(140)   // TELOPT PRAGMA HEARTBEAT
+const EXOPL rune = rune(255)              // Extended-Options-List
+
 func telnet(host string, port int) Telnet {
 	ret := Telnet{}
 	if host != "" {
